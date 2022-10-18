@@ -1,0 +1,19 @@
+﻿<PageTitle>Forbidden</PageTitle>
+
+<div class="d-flex align-items-center justify-content-center vh-100">
+    <div class="text-center">
+        <h1 class="display-1 fw-bold">403</h1>
+        <p class="fs-3"> <span class="text-danger">اووووه!</span> عدم احراز هویت.</p>
+        <p class="lead">
+           ورود به این صفحه برای شما ممنوع است.
+        </p>
+        <button onclick="@(()=>LoginPage())" class="btn btn-primary">ورود/ بازگشت به صفحه اصلی</button>
+    </div>
+</div>
+
+@{
+    void LoginPage()
+    {
+        _navigationManager.NavigateTo("/login");
+    }
+}

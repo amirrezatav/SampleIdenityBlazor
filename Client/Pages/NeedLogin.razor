@@ -1,0 +1,13 @@
+﻿@page "/NeedLogin"
+@using Infrastructure.Constant
+@using Microsoft.AspNetCore.Components.Authorization
+
+
+<AuthorizeView >
+    <Authorized>
+        <h3>شما وارد بخشی شده اید که نیاز مند ورود بوده است..</h3>
+    </Authorized>
+    <NotAuthorized>
+        <Forbidden/>
+    </NotAuthorized>
+</AuthorizeView>

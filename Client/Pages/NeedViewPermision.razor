@@ -1,0 +1,16 @@
+﻿@page "/NeedViewPermision"
+
+
+@using Infrastructure.Constant
+@using Microsoft.AspNetCore.Components.Authorization
+
+
+<AuthorizeView Roles="@RoleConstants.Administrator">
+    <Authorized>
+        <h3>شما مدیر هستید  و وارد این بخش شدید</h3>
+    </Authorized>
+    <NotAuthorized>
+        <h3>این بخش مخصوص مدیریت می باشد.</h3>
+        <Forbidden />
+    </NotAuthorized>
+</AuthorizeView>

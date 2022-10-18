@@ -1,0 +1,24 @@
+﻿@using System.Net.Http
+@using System.Net.Http.Json
+@using AppIE.Client.Managers
+@using Blazored.LocalStorage
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@using Microsoft.AspNetCore.Components.WebAssembly.Http
+@using Microsoft.JSInterop
+@using AppIE.Client
+@using AppIE.Client.Shared
+@using Radzen
+@using Radzen.Blazor
+
+
+@inject IAuthenticationManager _authenticationManager
+@inject NavigationManager _navigationManager
+@inject ApplicationStateProvider _stateProvider
+@inject HttpClient _httpClient
+@inject IHttpInterceptorManager _interceptor
+@inject ILocalStorageService _localStorage;
+@inject IJSRuntime _jsRuntime;
+

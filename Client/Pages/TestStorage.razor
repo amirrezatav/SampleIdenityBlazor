@@ -1,0 +1,63 @@
+﻿@page "/TestStorage"
+
+<h3>بررسی چند Storage</h3>
+
+
+<div class="row px-3">
+    <div class="col-md-6 col-lg-4 p-3">
+        <RadzenCard>
+            <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Cookie</RadzenText>
+            <RadzenTextBox Placeholder="Key" Change=@(args => OnChangeCookiekey(args, "TextBox")) Class="w-100" />
+            <RadzenTextBox Placeholder="Value" Change=@(args => OnChangeCookie(args, "TextBox")) Class="w-100" />
+            <RadzenButton class="mt-3" Click=@(args => OnClickCookie("Primary button")) Text="ذخیره" ButtonStyle="ButtonStyle.Primary" />
+        </RadzenCard>
+    </div>
+</div>
+
+<div class="row px-3">
+    <div class="col-md-6 col-lg-4 p-3">
+        <RadzenCard>
+            <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Local Storage</RadzenText>
+            <RadzenTextBox Placeholder="Key" Change=@(args => OnChangeLocalstoragekey(args, "TextBox")) Class="w-100" />
+            <RadzenTextBox Placeholder="Value" Change=@(args => OnChangeLocalstorage(args, "TextBox")) Class="w-100" />
+            <RadzenButton class="mt-3" Click=@(args => OnClickLocalstorage("Primary button")) Text="ذخیره" ButtonStyle="ButtonStyle.Primary" />
+        </RadzenCard>
+    </div>
+</div>
+
+
+@code {
+    string cookievalue;
+    string localstoragevalue;
+    string cookiekey;
+    string localstoragekey;
+    public void OnChangeLocalstoragekey(string input, string text)
+    {
+        localstoragekey = input;
+    }
+    public void OnChangeCookiekey(string input, string text)
+    {
+        cookiekey = input;
+    }
+    public void OnChangeLocalstorage(string input, string text)
+    {
+        localstoragevalue = input;
+    }
+    public void OnChangeCookie(string input, string text)
+    {
+        cookievalue = input;
+    }
+    public async Task WriteCookieAsync(string name, string value, int days)
+    {
+        var test = await _jsRuntime.InvokeAsync<object>("blazorExtensions.WriteCookie", name, value, days);
+        Console.WriteLine(test?.ToString());
+    }
+    public async Task OnClickCookie(string input)
+    {
+       await  WriteCookieAsync(cookiekey, cookievalue, 1);
+    }
+    public void OnClickLocalstorage(string input)
+    {
+        _localStorage.SetItemAsStringAsync(localstoragekey, localstoragevalue);
+    }
+}

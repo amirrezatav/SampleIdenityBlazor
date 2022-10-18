@@ -1,0 +1,20 @@
+﻿@inherits LayoutComponentBase
+<RadzenDialog />
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <button class="dropdown-item d-flex gap-2 align-items-center" onclick="@(()=>Logout())">
+                خروج
+            </button>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>

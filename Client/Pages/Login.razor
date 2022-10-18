@@ -1,0 +1,17 @@
+﻿@page "/login"
+@using Microsoft.AspNetCore.Authorization
+
+@attribute [AllowAnonymous]
+<PageTitle>Login</PageTitle>
+
+<div class="col-xl-6 p-3">
+    <RadzenCard class="p-5">
+        <RadzenText TextStyle="TextStyle.H5" TagName="TagName.H2" Class="mb-4">
+            ورود به حساب کاربری
+        </RadzenText>
+        <RadzenTemplateForm Data=@("LoginWithRegisterAndReset")>
+            <RadzenLogin AllowRegister="true" AllowResetPassword="true" Username=@_tokenModel.Username Password=@_tokenModel.Password
+                         Login=@(args => SubmitAsync(args,"no").Wait())/>
+        </RadzenTemplateForm>
+    </RadzenCard>
+</div>
